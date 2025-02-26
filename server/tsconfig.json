@@ -1,0 +1,10 @@
+{
+	"compilerOptions": {
+		"target": "ESNext",
+		"module": "NodeNext",
+		"strict": true,
+		"rootDir": "src",
+		"typeRoots": ["./src/typings", "./node_modules/@types"],
+		"noImplicitAny": false
+	}
+}

@@ -1,0 +1,45 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+.dark{
+    --background: #121212;
+    --primary: #ffffff;
+    --accent: #49de80;
+    --accent-dark: #38ab62; 
+    --accent-text: #ffffff;
+    --border: #e0f2fe;
+    --hover: #2a2a2a;
+}
+
+.light{
+    --background: #f8fdef;
+    --primary: #151614;
+    --accent: #bdc000;
+    --accent-dark: #afb300;
+    --accent-text: #bdc000;
+    --border: #bdc000;
+    --hover: #2a2a2a;
+}
+
+:root{
+    --background: #f8fdef;
+    --primary: #151614;
+    --accent: #bdc000;
+    --accent-dark: #afb300;
+    --accent-text: #bdc000;
+    --border: #bdc000;
+    --hover: #2a2a2a;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --background: #121212;
+        --primary: #ffffff;
+        --accent: #49de80;
+        --accent-dark: #38ab62; 
+        --accent-text: #ffffff;
+        --border: #e0f2fe;
+        --hover: #2a2a2a;
+    }
+}
