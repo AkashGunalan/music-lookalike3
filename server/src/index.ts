@@ -46,6 +46,6 @@ app.use('/server/auth' , authRouter);
 app.use('/server/test', testRouter);
 app.use('/server/api', apiRouter); 
 
-app.listen(5000, () => {
-    console.log('Server is listening on http://localhost:3000');
+app.listen(3001, () => {
+    console.log('Server is listening on http://localhost:3001');
 })

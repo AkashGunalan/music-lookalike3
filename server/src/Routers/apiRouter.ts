@@ -39,10 +39,11 @@ router.get('/search', async (req, res) => {
             throw new Error('Missing search parameter');
         const data = await spotifyApi.searchTracks(q?.toString() || '');
         data.body.tracks?.items.map((track) => {
-            img_urls.push(track.album.images[0].url);
+            const url = track.album.images[0]?.url;
+            if(url)
+                img_urls.push(url);
         })
 
-        console.log(img_urls);
         res.status(200).send(img_urls);
     }catch(err){
         console.log(err);
