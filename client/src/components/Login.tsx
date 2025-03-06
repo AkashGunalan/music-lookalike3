@@ -21,7 +21,7 @@ const Login = () => {
             const res = await axios.post('/server/auth/login', creds, { withCredentials: true });
             if(res.data.done){
                 console.log({ msg: 'Login Successfully..', data: res.data.msg })
-                //navigator('/search')
+                navigator('/search')
             }else 
                 setError('root', { message: res.data.msg });
         }catch(err){

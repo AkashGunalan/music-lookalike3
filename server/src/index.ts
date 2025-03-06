@@ -1,10 +1,10 @@
 import express from 'express';
 import mongoose from 'mongoose';
 import authRouter from './Routers/authRoute';
-import cors from 'cors';
 import testRouter from './Routers/testRouter';
 import apiRouter from './Routers/apiRouter'
 import session from 'express-session';
+import path from 'path';
 
 const app = express();
 
@@ -15,13 +15,6 @@ mongoose.connect(process.env.DB_URL || '')
 .catch((err) => {
     console.log(err);
 })
-
-const corsOptions = {
-    origin: ['http://localhost:5173'],
-    credentials: true
-}
-
-app.use(cors(corsOptions));
 
 app.use(express.json());
 
@@ -38,9 +31,12 @@ app.use(session({
     cookie: {
         maxAge: 1000 * 600,
         secure: false,
-        httpOnly: true
+        httpOnly: true,
+        sameSite: 'lax'
     }
 }))
+
+app.use("/", express.static(path.join(__dirname, "/static")));
 
 app.use('/server/auth' , authRouter);
 app.use('/server/test', testRouter);

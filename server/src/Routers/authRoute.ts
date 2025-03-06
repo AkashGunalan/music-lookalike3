@@ -14,9 +14,14 @@ router.post('/register', async (req, res) => {
     const { email, password } = req.body;
     
     try{
+        const userExists = await User.findOne({ email });
+        if(userExists){
+            res.status(400).send({ msg: 'User already exits', done: false})
+        }
+
         const salt = await bcrypt.genSalt();
         const hashedPassword = await bcrypt.hash(password, salt);
-        
+
         const user = await new User({ email, password: hashedPassword }).save();
         res.status(201).send({ msg: 'User registration successful', data: user, done: true });
     }catch{
